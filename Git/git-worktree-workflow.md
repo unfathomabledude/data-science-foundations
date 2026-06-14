@@ -110,7 +110,7 @@ Start coding here. Your `dev` and `prod` worktrees remain completely untouched.
 
 ```
 ../
-  Learning_Mastery/                         ← main repo
+  git-learning-mastery/                         ← main repo
   WrkTrs/
     git_learning_mastery/
       prod/                                 ← always tracks prod
