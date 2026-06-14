@@ -1,4 +1,4 @@
-# Git Worktree
+# Git Worktree — Team Workflow
 
 ## Overview
 
@@ -34,25 +34,28 @@ git pull
 
 git checkout dev
 git pull
+
+git checkout main   # switch to main so prod and dev are free for worktrees
 ```
 
 ```bash
 # Syntax
-git worktree add <path> <branch>
+git worktree add <path>/<repo-name>/<branch> <branch>
 
 # Your example
-git worktree add ../WrkTrs/prod prod
-git worktree add ../WrkTrs/dev dev
+git worktree add ../WrkTrs/git_learning_mastery/prod prod
+git worktree add ../WrkTrs/git_learning_mastery/dev dev
 ```
 
 Your folder structure now looks like this:
 
 ```
 ../
-  Learning_Mastery/     ← main repo
+  Learning_Mastery/                       ← main repo
   WrkTrs/
-    prod/               ← always tracks prod
-    dev/                ← always tracks dev
+    git_learning_mastery/
+      prod/                               ← always tracks prod
+      dev/                                ← always tracks dev
 ```
 
 ---
@@ -67,11 +70,11 @@ Open a new terminal tab and go to the dev worktree:
 
 ```bash
 # Syntax
-cd <dev-worktree-path>
+cd <path>/<repo-name>/dev
 git pull
 
 # Your example
-cd ../WrkTrs/dev
+cd ../WrkTrs/git_learning_mastery/dev
 git pull
 ```
 
@@ -79,10 +82,10 @@ git pull
 
 ```bash
 # Syntax
-git worktree add -b <feature-branch-name> <feature-worktree-path>
+git worktree add -b <feature-branch-name> <path>/<repo-name>/<feature-name>
 
 # Your example
-git worktree add -b ftr/alpha ../ftr-alpha
+git worktree add -b ftr/alpha_v1 ../WrkTrs/git_learning_mastery/ftr-alpha-v1
 ```
 
 > Since you are already inside the `dev` worktree, Git uses `dev` as the starting point automatically.
@@ -93,10 +96,10 @@ Open another new terminal tab and go to your feature worktree:
 
 ```bash
 # Syntax
-cd <feature-worktree-path>
+cd <path>/<repo-name>/<feature-name>
 
 # Your example
-cd ../ftr-alpha
+cd ../WrkTrs/git_learning_mastery/ftr-alpha-v1
 ```
 
 Start coding here. Your `dev` and `prod` worktrees remain completely untouched.
@@ -107,11 +110,16 @@ Start coding here. Your `dev` and `prod` worktrees remain completely untouched.
 
 ```
 ../
-  Learning_Mastery/     ← main repo
+  Learning_Mastery/                         ← main repo
   WrkTrs/
-    prod/               ← always tracks prod
-    dev/                ← always tracks dev
-  ftr-alpha/         ← feature worktree (ftr/alpha branch)
+    git_learning_mastery/
+      prod/                                 ← always tracks prod
+      dev/                                  ← always tracks dev
+      ftr-alpha-v1/                         ← feature worktree (ftr/alpha_v1 branch)
+    another_project/
+      prod/
+      dev/
+      ftr-login/                            ← another repo's feature worktree
 ```
 
 ---
@@ -123,7 +131,7 @@ Start coding here. Your `dev` and `prod` worktrees remain completely untouched.
 git worktree list
 
 # Remove a feature worktree when done
-git worktree remove ../ftr-alpha
+git worktree remove ../WrkTrs/git_learning_mastery/ftr-alpha-v1
 
 # Clean up stale worktree references
 git worktree prune
