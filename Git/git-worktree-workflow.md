@@ -51,7 +51,7 @@ Your folder structure now looks like this:
 
 ```
 ../
-  Learning_Mastery/                       ← main repo
+  git-learning-mastery/                       ← main repo
   WrkTrs/
     git_learning_mastery/
       prod/                               ← always tracks prod
